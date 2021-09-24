@@ -370,6 +370,9 @@ class AudiobookAlbum(Agent.Album):
         # Check if prename and surname exist, otherwise exit
         if len(name_parts) < 2:
             return input_name
+        # Check if name consists of "author - something"
+        if name_parts[-2] == '-':
+            name_parts[-2:] = []
         
         # traverse through prenames
         for i in range(len(name_parts)-1):
